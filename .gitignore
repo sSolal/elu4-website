@@ -1,0 +1,13 @@
+# build output
+dist/
+# generated types & cache
+.astro/
+# deps
+node_modules/
+# netlify
+.netlify/
+# misc
+.DS_Store
+*.log
+.env
+.env.production

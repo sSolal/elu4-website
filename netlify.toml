@@ -1,0 +1,13 @@
+# Netlify build config for the Elua site (static Astro output).
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Astro builds clean URLs; this keeps things tidy if a stray .html is requested.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301

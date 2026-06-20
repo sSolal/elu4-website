@@ -1,0 +1,331 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import ScreenshotGallery from '../components/ScreenshotGallery.astro';
+import type { Shot } from '../components/ScreenshotGallery.astro';
+
+const shots: Shot[] = [
+  {
+    file: 'corridor.png',
+    level: 'Level 1',
+    title: 'The Corridor',
+    caption: 'Learning to read depth in the new direction.',
+  },
+  {
+    file: 'turn-and-face.png',
+    level: 'Level 3',
+    title: 'Turn & Face',
+    caption: 'Bringing the fourth direction into view.',
+  },
+  {
+    file: 'leap.png',
+    level: 'Level 5',
+    title: 'The Leap',
+    caption: 'Gravity, footing, and a jump across the gap.',
+  },
+  {
+    file: 'plane-4d.png',
+    level: 'Level 7',
+    title: 'The Long Course',
+    caption: 'Flight through hoops that curve in genuine 4D.',
+  },
+  {
+    file: 'forest-fetch.png',
+    level: 'Level 8',
+    title: 'Forest Errand',
+    caption: 'Wayfinding, a neighbour, and a thing to carry back.',
+  },
+  {
+    file: 'maze.png',
+    level: 'Level 9',
+    title: 'The Maze',
+    caption: 'Holding a 4D place in your head until it goes quiet.',
+  },
+];
+
+const roadmap = [
+  {
+    n: '01',
+    h: 'A first demo',
+    p: 'Soon: the first public demo of our 4D interaction system — ten levels that teach your eyes and hands to move in four dimensions.',
+  },
+  {
+    n: '02',
+    h: 'Sharpen the tools',
+    p: 'Harden the renderer and the camera and interaction systems with everything we learn from how those first levels actually feel to play.',
+  },
+  {
+    n: '03',
+    h: 'Begin building Tessara',
+    p: 'With the technique in hand, start raising the world itself — the cottage, the round, the aunt’s workshop, the country you’re mandated to keep.',
+  },
+  {
+    n: '04',
+    h: 'Open the workshop',
+    p: 'Release the toolkit so other menders can build places inside Tessara alongside us, and the single-author world becomes a shared one.',
+  },
+];
+---
+
+<Base>
+  <Hero />
+
+  <!-- THE WORLD ------------------------------------------------------- -->
+  <section id="world" class="section-pad">
+    <div class="wrap world">
+      <div class="world__copy">
+        <p class="eyebrow">The world</p>
+        <h2>A vast country that has started to falter</h2>
+        <p class="lede world__lede">
+          Tessara is an immense, intricate place — and lately, not everything
+          runs smoothly.
+        </p>
+        <p>
+          That is why there are keepers. Night’s keepers such as yourself are
+          mandated to walk their stretch, find what has slipped out of true, and
+          set it running smoothly again. It is honest, humble, civic work: lamps
+          lit against a big quiet, a place to be kept rather than a frontier to
+          be conquered.
+        </p>
+        <p>
+          Your aunt is teaching you her craft, before her workshop becomes
+          yours. But the deeper you learn it — fault by fault, repair by repair
+          — the more you start to wonder whether all these small failures aren’t
+          really one larger thing, and whether anyone has noticed but you…
+        </p>
+      </div>
+      <aside class="world__aside panel">
+        <h3>Where we’re at</h3>
+        <p class="muted">
+          Elua is under active development — and early. Right now we’re inventing
+          the rendering technique and the interaction systems we’ll need before
+          we can even begin building Tessara itself.
+        </p>
+        <p class="muted">
+          What you see here is the workshop, not the finished world. We’re
+          building in the open, and you’re welcome to follow along.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- AN EXPERIMENT, IN 4D -------------------------------------------- -->
+  <section class="section-pad band">
+    <div class="wrap">
+      <p class="eyebrow">An experiment</p>
+      <h2 class="band__h">This game is an experiment, in 4D</h2>
+      <p class="lede band__lede">
+        Tessara is a four-dimensional world, and your screen is flat. So Elua
+        renders it the way a camera flattens our own world — only with one more
+        step.
+      </p>
+
+      <div class="pipe" role="list">
+        <span class="pipe__node" role="listitem">4D scene</span>
+        <span class="pipe__arrow" aria-hidden="true">→</span>
+        <span class="pipe__node" role="listitem">3D view</span>
+        <span class="pipe__arrow" aria-hidden="true">→</span>
+        <span class="pipe__node" role="listitem">2D screen</span>
+      </div>
+
+      <p class="experiment__p">
+        Every frame, the live four-dimensional scene is projected down into a
+        three-dimensional view, and that view is drawn onto your two-dimensional
+        screen — in real time, as you move. The whole game is really a way of
+        looking.
+      </p>
+      <p class="experiment__p">
+        And here is our honest wager: <strong>our hypothesis is that by playing
+        enough, you can rewire your brain and build a genuine intuition for
+        four-dimensional space</strong> — the way you already have one for three.
+        We don’t yet know whether it’s true. Finding out is a good part of why
+        we’re building this.
+      </p>
+
+      <ScreenshotGallery shots={shots} />
+
+      <p class="experiment__cap muted">
+        Frames from the live build — the renderer as it stands today. A handful
+        are still being staged, and those tiles fill in as we go.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHERE WE'RE HEADED --------------------------------------------- -->
+  <section class="section-pad">
+    <div class="wrap">
+      <p class="eyebrow">Where we’re headed</p>
+      <h2 class="band__h">The road from here</h2>
+      <p class="lede band__lede">
+        Our roadmap as the people building this — what we’re making next, in
+        roughly the order we mean to make it.
+      </p>
+      <ol class="headed">
+        {
+          roadmap.map((s) => (
+            <li class="headed__item">
+              <span class="headed__n">{s.n}</span>
+              <div>
+                <h3>{s.h}</h3>
+                <p class="muted">{s.p}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- CTA ------------------------------------------------------------- -->
+  <section class="cta-band">
+    <div class="wrap cta">
+      <h2>Join us in the adventure</h2>
+      <p class="lede">
+        Elua is an open source project, maintained and fixed by a few motivated
+        menders. Feel free to contact us, or join us in the adventure.
+      </p>
+      <div class="cta__row">
+        <a class="btn" href="/open">How it’s being built →</a>
+        <a class="btn btn--ghost" href="/dimension">Four dimensions?</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* shared band */
+  .band {
+    border-block: 1px solid var(--rule);
+    background: linear-gradient(180deg, rgba(11, 16, 25, 0.5), transparent 60%);
+  }
+  .band__h {
+    max-width: 20ch;
+  }
+  .band__lede {
+    max-width: 44ch;
+    margin-top: 1rem;
+  }
+
+  /* the world */
+  .world {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 900px) {
+    .world {
+      grid-template-columns: 1.6fr 1fr;
+      align-items: start;
+      gap: 3.5rem;
+    }
+  }
+  .world__copy h2 {
+    margin-top: 0.8rem;
+    max-width: 18ch;
+  }
+  .world__lede {
+    margin-block: 1.4rem;
+  }
+  .world__copy p + p {
+    margin-top: 1.1rem;
+  }
+  .world__aside {
+    padding: 1.6rem 1.6rem 1.8rem;
+    position: sticky;
+    top: 90px;
+  }
+  .world__aside h3 {
+    color: var(--lamp-300);
+  }
+  .world__aside p {
+    margin-top: 0.6rem;
+    font-size: var(--step--1);
+  }
+  /* experiment / 4d pipeline */
+  .pipe {
+    margin-top: 2.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.7rem 0.9rem;
+  }
+  .pipe__node {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--ceramic-100);
+    border: 1px solid var(--line-700);
+    border-radius: var(--radius);
+    background: rgba(20, 30, 44, 0.4);
+    padding: 0.5rem 1.1rem;
+  }
+  .pipe__arrow {
+    color: var(--accent);
+    font-size: 1.3rem;
+  }
+  .experiment__p {
+    margin-top: 1.4rem;
+    max-width: 60ch;
+  }
+  .experiment__cap {
+    margin-top: 1rem;
+    font-size: var(--step--1);
+    font-style: italic;
+  }
+
+  /* where we're headed */
+  .headed {
+    list-style: none;
+    counter-reset: none;
+    padding: 0;
+    margin-top: 2.6rem;
+    display: grid;
+    gap: 0;
+  }
+  .headed__item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.4rem;
+    padding-block: 1.6rem;
+    border-top: 1px solid var(--rule);
+  }
+  .headed__item:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+  .headed__n {
+    font-family: var(--serif);
+    font-size: var(--step-2);
+    color: var(--lamp-500);
+    opacity: 0.7;
+    line-height: 1;
+  }
+  .headed__item h3 {
+    color: var(--ceramic-100);
+  }
+  .headed__item p {
+    margin-top: 0.4rem;
+    max-width: 60ch;
+  }
+
+  /* cta */
+  .cta-band {
+    border-top: 1px solid var(--rule);
+    background:
+      radial-gradient(70% 120% at 50% 0%, rgba(227, 168, 87, 0.1), transparent 60%),
+      linear-gradient(180deg, rgba(11, 16, 25, 0.4), transparent);
+    padding-block: clamp(4rem, 10vw, 7rem);
+  }
+  .cta {
+    text-align: center;
+    max-width: 50rem;
+  }
+  .cta .lede {
+    margin: 1.2rem auto 2rem;
+    max-width: 48ch;
+  }
+  .cta__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    justify-content: center;
+  }
+</style>

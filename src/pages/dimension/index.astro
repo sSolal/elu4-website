@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import DriftAmbient from '../../components/DriftAmbient.astro';
+---
+
+<Base
+  title="Four dimensions? — Elua"
+  description="Field notes and a dev journal from Tessara, the four-dimensional world we're building Elua inside of."
+>
+  <section class="dhero">
+    <DriftAmbient intensity={0.7} />
+    <div class="wrap dhero__inner">
+      <p class="eyebrow">Four dimensions?</p>
+      <h1>Field notes from Tessara</h1>
+    </div>
+    <div class="dhero__fade" aria-hidden="true"></div>
+  </section>
+
+  <section class="section-pad">
+    <div class="wrap">
+      <p class="coming">Articles coming soon.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .dhero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-block: clamp(3.5rem, 11vh, 7rem) clamp(2.5rem, 7vh, 5rem);
+  }
+  .dhero__inner {
+    position: relative;
+    z-index: 2;
+    max-width: 50rem;
+  }
+  .dhero h1 {
+    font-size: var(--step-4);
+    margin-top: 1rem;
+    max-width: 16ch;
+  }
+  .dhero__fade {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 40%;
+    z-index: 1;
+    background: linear-gradient(180deg, transparent, var(--night-900));
+    pointer-events: none;
+  }
+  .coming {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    font-style: italic;
+    color: var(--ceramic-200);
+  }
+</style>

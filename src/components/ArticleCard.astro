@@ -1,0 +1,117 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  subtitle?: string;
+  date?: Date;
+  kind?: string; // e.g. "Essay", "Dev journal"
+  readingMin?: number;
+}
+const { href, title, subtitle, date, kind, readingMin } = Astro.props;
+const dateLabel = date
+  ? date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    })
+  : undefined;
+---
+
+<a class="card" href={href}>
+  <div class="card__top">
+    {kind && <span class="card__kind">{kind}</span>}
+    <svg class="card__mark" viewBox="0 0 40 40" aria-hidden="true">
+      <rect x="9" y="9" width="22" height="22" class="c-out" />
+      <rect x="15" y="15" width="22" height="22" class="c-in" />
+      <path d="M9 9l6 6M31 9l-6 6M9 31l6-6M31 31l-6-6" class="c-link" />
+    </svg>
+  </div>
+  <h3 class="card__title">{title}</h3>
+  {subtitle && <p class="card__sub muted">{subtitle}</p>}
+  <div class="card__meta">
+    {dateLabel && <span>{dateLabel}</span>}
+    {readingMin && <span>· {readingMin} min</span>}
+    <span class="card__go">Read →</span>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    padding: 1.4rem 1.4rem 1.2rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--line-700);
+    background: linear-gradient(170deg, rgba(20, 30, 44, 0.6), rgba(11, 16, 25, 0.6));
+    color: var(--ink);
+    transition: transform 0.3s var(--ease), border-color 0.3s var(--ease),
+      box-shadow 0.3s var(--ease);
+    height: 100%;
+  }
+  .card:hover {
+    text-decoration: none;
+    transform: translateY(-3px);
+    border-color: rgba(227, 168, 87, 0.45);
+    box-shadow: 0 18px 50px -28px rgba(0, 0, 0, 0.9),
+      0 0 50px -26px rgba(143, 185, 168, 0.5);
+  }
+  .card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card__kind {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 650;
+    color: var(--drift-400);
+  }
+  .card__mark {
+    width: 36px;
+    height: 36px;
+    opacity: 0.7;
+    transition: opacity 0.3s var(--ease), transform 0.5s var(--ease);
+  }
+  .card:hover .card__mark {
+    opacity: 1;
+    transform: rotate(8deg);
+  }
+  .c-out,
+  .c-in {
+    fill: none;
+    stroke: var(--lamp-500);
+    stroke-width: 1.2;
+  }
+  .c-in {
+    stroke: var(--drift-400);
+    opacity: 0.8;
+  }
+  .c-link {
+    stroke: rgba(154, 166, 173, 0.4);
+    stroke-width: 1;
+  }
+  .card__title {
+    font-size: var(--step-1);
+    color: var(--ceramic-100);
+  }
+  .card__sub {
+    font-size: var(--step--1);
+    line-height: 1.5;
+  }
+  .card__meta {
+    margin-top: auto;
+    padding-top: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: var(--step--1);
+    color: var(--muted-400);
+  }
+  .card__go {
+    margin-left: auto;
+    color: var(--lamp-400);
+    font-weight: 600;
+  }
+</style>

@@ -1,0 +1,355 @@
+---
+import Base from '../layouts/Base.astro';
+
+const REPO_URL = 'https://github.com/sSolal/elu4';
+---
+
+<Base
+  title="Open Source — Elua"
+  description="Elua is an open-source game and an open world. The core game is authored by us; the world around it grows with the people who build inside it."
+>
+  <!-- HERO ------------------------------------------------------------ -->
+  <section class="ohero section-pad">
+    <div class="wrap ohero__inner">
+      <p class="eyebrow">Open source</p>
+      <h1>A world built in the open,<br />and meant to be added to</h1>
+      <p class="lede ohero__lede">
+        Elua is open source. The core game is authored and kept by us — but the
+        world doesn’t stop at its edges. User-created assets, subworlds, annex
+        arcs and quests, even new mechanics, can all be folded into our open
+        world.
+      </p>
+      <div class="ohero__row">
+        <a class="btn" href={REPO_URL} rel="noopener">View the source on GitHub →</a>
+        <a class="btn btn--ghost" href="#contribute">How contributions work</a>
+      </div>
+      <p class="muted ohero__early">
+        This is early. The repository, the tools, and the process are all still
+        taking shape — what follows is the shape we’re building toward.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHY OPEN -------------------------------------------------------- -->
+  <section class="section-pad band">
+    <div class="wrap two">
+      <div>
+        <p class="eyebrow">Why open</p>
+        <h2>An authored heart, an open world around it</h2>
+      </div>
+      <div class="two__body">
+        <p>
+          The main game — Tessara, the keeper’s story, the world you set right —
+          is hand-crafted, and we keep it that way. It’s the part we author with
+          care, so it holds together.
+        </p>
+        <p>
+          But a single team can only build so much world. Everything that grows
+          around that authored heart can be made by the people who play: places
+          to explore, stories to tell, even new ways to play.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO LAYERS ------------------------------------------------------ -->
+  <section class="section-pad">
+    <div class="wrap">
+      <p class="eyebrow">One world, two halves</p>
+      <h2 class="layers__h">The part we author, and the part we build together</h2>
+      <div class="layers">
+        <article class="layer panel">
+          <h3>The core</h3>
+          <p class="layer__tag muted">Authored · curated by us</p>
+          <p>
+            Tessara and the keeper’s story: the world we hand-craft and keep
+            coherent. This is the great game, and it stays curated.
+          </p>
+        </article>
+        <article class="layer panel layer--weave">
+          <h3>The open world</h3>
+          <p class="layer__tag muted">Open · built together</p>
+          <p>
+            Everything growing around the core — assets, subworlds, side-arcs,
+            quests, even new mechanics — made by people like you and woven into
+            the same living world for anyone to reach.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW CONTRIBUTIONS GET IN --------------------------------------- -->
+  <section id="contribute" class="section-pad band">
+    <div class="wrap">
+      <p class="eyebrow">How contributions work</p>
+      <h2 class="pub__h">Build something, and we’ll weave it in</h2>
+      <p class="lede pub__lede">
+        The idea is simple: what you make can become part of the world everyone
+        plays in.
+      </p>
+      <ol class="steps">
+        <li class="step">
+          <span class="step__n">1</span>
+          <div>
+            <h3>You build something</h3>
+            <p class="muted">
+              An asset, a subworld, a side-arc, a quest, a puzzle — even a new
+              mechanic. Anything that belongs in the world.
+            </p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__n">2</span>
+          <div>
+            <h3>You share it with us</h3>
+            <p class="muted">
+              Open it up and send it our way. It’s open source, so working in
+              the open is the natural way to do it.
+            </p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__n">3</span>
+          <div>
+            <h3>The good ones get woven in</h3>
+            <p class="muted">
+              What fits the world and holds together becomes part of Elua — out
+              where everyone can find it and explore it.
+            </p>
+          </div>
+        </li>
+      </ol>
+      <p class="muted abstract-note">
+        We’re keeping this light for now — we’re not there yet. The concrete
+        tools and review process will firm up as the core game does, and we’d
+        rather figure them out in the open, with you.
+      </p>
+    </div>
+  </section>
+
+  <!-- UNDER THE HOOD -------------------------------------------------- -->
+  <section class="section-pad">
+    <div class="wrap">
+      <p class="eyebrow">Under the hood</p>
+      <h2 class="hood__h">For the engine-curious</h2>
+      <div class="hood">
+        {
+          [
+            ['C++17', 'A from-scratch engine — no off-the-shelf 3D engine could hold a fourth coordinate in its bones.'],
+            ['Rotor4D', 'Rotation handled with geometric algebra — planes, not axes, so all six rotation planes compose cleanly in 4D.'],
+            ['OpenGL pipeline', 'A real-time 4D → 3D → 2D projection renderer with depth cues, occlusion, and a tunable look.'],
+            ['VR-ready', 'An optional OpenXR path — four dimensions read even better with stereo depth and your own head as the camera.'],
+            ['Headless tools', 'A CLI for reasoning about 4D scenes and generating geometry, so the math can be tested without a window.'],
+            ['Open by default', 'Built to be read, run, and extended — the same systems we build the world with are the ones we mean to open up.'],
+          ].map(([k, v]) => (
+            <div class="hood__cell">
+              <code class="hood__k">{k}</code>
+              <p class="muted">{v}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- GET INVOLVED ---------------------------------------------------- -->
+  <section class="cta-band">
+    <div class="wrap cta">
+      <h2>Join us in the adventure</h2>
+      <p class="lede">
+        Elua is an open source project, maintained and fixed by a few motivated
+        menders. It’s early, and that’s the best time to arrive. Watch the
+        source, follow along, and say hello — feel free to contact us, or join
+        us in the adventure.
+      </p>
+      <div class="cta__row">
+        <a class="btn" href={REPO_URL} rel="noopener">Star &amp; watch on GitHub</a>
+        <a class="btn btn--ghost" href="/dimension">Four dimensions?</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .band {
+    border-block: 1px solid var(--rule);
+    background: linear-gradient(180deg, rgba(11, 16, 25, 0.5), transparent 60%);
+  }
+
+  /* hero */
+  .ohero__inner {
+    max-width: 52rem;
+  }
+  .ohero h1 {
+    font-size: var(--step-4);
+    margin-top: 1rem;
+  }
+  .ohero__lede {
+    margin-top: 1.6rem;
+    max-width: 46ch;
+  }
+  .ohero__row {
+    margin-top: 2.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+  .ohero__early {
+    margin-top: 2rem;
+    font-size: var(--step--1);
+    max-width: 52ch;
+    font-style: italic;
+  }
+
+  /* two-col */
+  .two {
+    display: grid;
+    gap: 1.6rem 3rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 860px) {
+    .two {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: start;
+    }
+  }
+  .two h2 {
+    max-width: 16ch;
+  }
+  .two__body p + p {
+    margin-top: 1.1rem;
+  }
+
+  /* layers */
+  .layers__h {
+    max-width: 22ch;
+    margin-bottom: 2.4rem;
+  }
+  .layers {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+  @media (min-width: 880px) {
+    .layers {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .layer {
+    padding: 1.8rem;
+  }
+  .layer h3 {
+    color: var(--lamp-300);
+  }
+  .layer--weave h3 {
+    color: var(--drift-400);
+  }
+  .layer__tag {
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    margin-block: 0.3rem 0.9rem;
+  }
+
+  /* publishing steps */
+  .pub__h {
+    margin-bottom: 0.8rem;
+  }
+  .pub__lede {
+    max-width: 52ch;
+    margin-bottom: 2.4rem;
+  }
+  .steps {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.4rem;
+    padding-block: 1.6rem;
+    border-top: 1px solid var(--rule);
+  }
+  .step:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+  .step__n {
+    display: grid;
+    place-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    border: 1px solid var(--accent);
+    color: var(--lamp-300);
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    box-shadow: 0 0 18px -6px rgba(227, 168, 87, 0.6);
+  }
+  .step h3 {
+    color: var(--ceramic-100);
+  }
+  .step p {
+    margin-top: 0.4rem;
+    max-width: 60ch;
+    font-size: var(--step-0);
+  }
+  .abstract-note {
+    margin-top: 1.8rem;
+    max-width: 60ch;
+    font-style: italic;
+    font-size: var(--step--1);
+  }
+
+  /* under the hood */
+  .hood__h {
+    margin-bottom: 2rem;
+  }
+  .hood {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+  .hood__cell {
+    padding: 1.3rem;
+    border: 1px solid var(--line-700);
+    border-radius: var(--radius);
+    background: rgba(11, 16, 25, 0.4);
+  }
+  .hood__k {
+    font-size: 0.9rem;
+    color: var(--lamp-300);
+    background: rgba(36, 50, 70, 0.5);
+    padding: 0.18em 0.5em;
+    border-radius: 5px;
+  }
+  .hood__cell p {
+    margin-top: 0.7rem;
+    font-size: var(--step--1);
+  }
+
+  /* cta */
+  .cta-band {
+    border-top: 1px solid var(--rule);
+    background:
+      radial-gradient(70% 120% at 50% 0%, rgba(227, 168, 87, 0.1), transparent 60%),
+      linear-gradient(180deg, rgba(11, 16, 25, 0.4), transparent);
+    padding-block: clamp(4rem, 10vw, 7rem);
+  }
+  .cta {
+    text-align: center;
+    max-width: 50rem;
+  }
+  .cta .lede {
+    margin: 1.2rem auto 2rem;
+    max-width: 52ch;
+  }
+  .cta__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    justify-content: center;
+  }
+</style>

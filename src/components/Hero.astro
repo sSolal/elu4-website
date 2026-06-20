@@ -1,0 +1,124 @@
+---
+import DriftAmbient from './DriftAmbient.astro';
+---
+
+<section class="hero">
+  <DriftAmbient intensity={1} />
+  <div class="hero__lamp" aria-hidden="true"></div>
+
+  <div class="wrap hero__inner">
+    <p class="eyebrow">An open-source game · in the making</p>
+
+    <h1 class="hero__title">Elua</h1>
+
+    <p class="hero__lede lede">
+      Tessara is an immense, half-understood country, and not all of it runs
+      smoothly. As one of its keepers, your work is to set it right again — to
+      walk the round, read the land, mend what has drifted, and keep the lamp
+      lit one more night. Your aunt is teaching you the craft, before her
+      workshop becomes yours.
+    </p>
+
+    <div class="hero__cta">
+      <a class="btn" href="#world">Step into the world</a>
+      <a class="btn btn--ghost" href="/open">Build it with us →</a>
+    </div>
+
+    <p class="hero__whisper muted">
+      Tessara simply runs in four dimensions — and no one who lives there ever
+      thinks to mention it.
+    </p>
+  </div>
+
+  <div class="hero__fade" aria-hidden="true"></div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    isolation: isolate;
+    min-height: min(92vh, 860px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero__lamp {
+    position: absolute;
+    z-index: 0;
+    top: -20%;
+    left: 50%;
+    width: 120vmax;
+    height: 80vmax;
+    transform: translateX(-50%);
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(227, 168, 87, 0.16),
+      rgba(227, 168, 87, 0.05) 40%,
+      transparent 65%
+    );
+    pointer-events: none;
+    animation: lamp-breathe 11s ease-in-out infinite;
+  }
+  @keyframes lamp-breathe {
+    0%,
+    100% {
+      opacity: 0.85;
+      transform: translateX(-50%) scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(-50%) scale(1.04);
+    }
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 2;
+    padding-block: clamp(4rem, 12vh, 9rem);
+    max-width: 50rem;
+  }
+  .hero__title {
+    margin-top: 1.1rem;
+    font-size: var(--step-5);
+    letter-spacing: 0.01em;
+    line-height: 0.95;
+    background: linear-gradient(
+      176deg,
+      var(--ceramic-100) 30%,
+      var(--lamp-300) 75%,
+      var(--lamp-500)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 6px 40px rgba(227, 168, 87, 0.18));
+  }
+  .hero__lede {
+    margin-top: 1.6rem;
+    max-width: 38ch;
+  }
+  .hero__cta {
+    margin-top: 2.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+  .hero__whisper {
+    margin-top: 2.6rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: var(--step-0);
+    max-width: 42ch;
+    opacity: 0.85;
+  }
+
+  .hero__fade {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 30%;
+    z-index: 1;
+    background: linear-gradient(180deg, transparent, var(--night-900));
+    pointer-events: none;
+  }
+</style>

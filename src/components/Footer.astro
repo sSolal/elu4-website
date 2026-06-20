@@ -1,0 +1,109 @@
+---
+/**
+ * Footer — the quiet sign-off. Links out, and the project's standing.
+ * GitHub / contact URLs are placeholders for the maintainer to fill in.
+ */
+const year = 2026; // build-time constant; bump as needed
+const REPO_URL = 'https://github.com/sSolal/elu4';
+---
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <div class="foot__brand">
+      <span class="foot__word">Elua</span>
+      <p class="muted foot__tag">
+        Keep the lamps lit. An open world held by many hands.
+      </p>
+    </div>
+
+    <nav class="foot__cols" aria-label="Footer">
+      <div>
+        <h4 class="foot__h">Explore</h4>
+        <a href="/">The Game</a>
+        <a href="/open">Open Source</a>
+        <a href="/dimension">Four dimensions?</a>
+      </div>
+      <div>
+        <h4 class="foot__h">Follow along</h4>
+        <a href={REPO_URL} rel="noopener">GitHub</a>
+        <a href="/dimension">Dev journal</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="wrap foot__base">
+    <p class="muted">
+      © {year} Elua. Made with reverence and upkeep — open source, in progress.
+    </p>
+    <p class="muted foot__small">
+      Tessara, kept lamplit one more night.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .foot {
+    margin-top: auto;
+    border-top: 1px solid var(--rule);
+    background: linear-gradient(180deg, transparent, rgba(7, 10, 18, 0.6));
+    padding-top: clamp(2.5rem, 6vw, 4rem);
+  }
+  .foot__inner {
+    display: grid;
+    gap: 2.5rem 3rem;
+    grid-template-columns: 1fr;
+    padding-bottom: 2.5rem;
+  }
+  @media (min-width: 720px) {
+    .foot__inner {
+      grid-template-columns: 1.2fr 1fr;
+      align-items: start;
+    }
+  }
+  .foot__word {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    color: var(--lamp-300);
+  }
+  .foot__tag {
+    max-width: 28ch;
+    margin-top: 0.4rem;
+    font-size: var(--step--1);
+  }
+  .foot__cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+  }
+  .foot__cols h4 {
+    font-family: var(--sans);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    font-weight: 650;
+  }
+  .foot__cols a {
+    display: block;
+    color: var(--ceramic-300);
+    padding-block: 0.28em;
+    font-size: var(--step--1);
+  }
+  .foot__cols a:hover {
+    color: var(--lamp-300);
+  }
+  .foot__base {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    justify-content: space-between;
+    padding-block: 1.6rem;
+    border-top: 1px solid rgba(36, 50, 70, 0.5);
+    font-size: var(--step--1);
+  }
+  .foot__small {
+    font-style: italic;
+    font-family: var(--serif);
+  }
+</style>

@@ -1,0 +1,10 @@
+# Real game screenshots go here.
+#
+# Drop PNG/JPG files named to match the gallery on the front page and they will
+# replace the placeholder tiles automatically — no code change needed:
+#
+#   corridor.png · turn-and-face.png · leap.png · plane-4d.png ·
+#   forest-fetch.png · maze.png
+#
+# Recommended: 16:10, ~1600×1000, PNG. See ../../../new/SCREENSHOTS_FOR_WEBSITE.md
+# for what each frame should show and why they aren't here yet.

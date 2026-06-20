@@ -1,0 +1,98 @@
+---
+/**
+ * DriftAmbient — slow luminous double-currents threading the dark.
+ * Pure SVG + CSS. Decorative only (aria-hidden). Calms under reduced-motion.
+ * Evokes the "drift": space turning in two planes at once, lamplit.
+ */
+interface Props {
+  intensity?: number; // 0..1 opacity multiplier
+}
+const { intensity = 1 } = Astro.props;
+---
+
+<div class="drift" aria-hidden="true" style={`--drift-intensity:${intensity}`}>
+  <svg
+    class="drift__svg"
+    viewBox="0 0 1200 700"
+    preserveAspectRatio="xMidYMid slice"
+    role="presentation"
+  >
+    <defs>
+      <linearGradient id="driftLine" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="transparent" />
+        <stop offset="22%" stop-color="rgba(143,185,168,0.0)" />
+        <stop offset="50%" stop-color="rgba(143,185,168,0.55)" />
+        <stop offset="78%" stop-color="rgba(246,215,159,0.35)" />
+        <stop offset="100%" stop-color="transparent" />
+      </linearGradient>
+      <radialGradient id="driftGlow" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="rgba(227,168,87,0.16)" />
+        <stop offset="100%" stop-color="transparent" />
+      </radialGradient>
+    </defs>
+
+    <rect width="1200" height="700" fill="url(#driftGlow)" />
+
+    <!-- braided currents: lines that thread past one another, never crossing -->
+    <g class="drift__lines" fill="none" stroke="url(#driftLine)" stroke-width="1.4">
+      <path d="M-100,180 C220,90 420,300 700,220 S1080,120 1320,210" />
+      <path d="M-100,300 C200,250 480,420 760,330 S1100,260 1320,330" />
+      <path d="M-100,430 C260,400 440,560 720,470 S1080,400 1320,470" />
+      <path d="M-100,560 C240,540 520,640 780,580 S1120,520 1320,560" />
+      <path d="M-100,90 C300,40 560,150 820,110 S1140,60 1320,120" />
+    </g>
+  </svg>
+</div>
+
+<style>
+  .drift {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .drift__svg {
+    position: absolute;
+    inset: -5% -5% -5% -5%;
+    width: 110%;
+    height: 110%;
+    opacity: calc(0.9 * var(--drift-intensity, 1));
+  }
+  .drift__lines path {
+    stroke-dasharray: 8 22;
+    animation: drift-flow 26s linear infinite;
+  }
+  .drift__lines path:nth-child(2) {
+    animation-duration: 34s;
+    animation-direction: reverse;
+    opacity: 0.8;
+  }
+  .drift__lines path:nth-child(3) {
+    animation-duration: 30s;
+    opacity: 0.7;
+  }
+  .drift__lines path:nth-child(4) {
+    animation-duration: 40s;
+    animation-direction: reverse;
+    opacity: 0.55;
+  }
+  .drift__lines path:nth-child(5) {
+    animation-duration: 46s;
+    opacity: 0.5;
+  }
+
+  @keyframes drift-flow {
+    to {
+      stroke-dashoffset: -600;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .drift__lines path {
+      animation: none;
+      stroke-dasharray: none;
+      opacity: 0.4;
+    }
+  }
+</style>

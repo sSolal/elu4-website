@@ -1,0 +1,196 @@
+---
+import { Image } from 'astro:assets';
+
+/**
+ * ScreenshotGallery — the "Where we are" frames.
+ *
+ * Real captures are looked up by filename from src/assets/screens/. Any that
+ * are not present yet fall back to a styled placeholder tile, so the gallery
+ * is complete today and real frames slot in WITHOUT code changes — just drop
+ * a PNG named e.g. `maze.png` into that folder. (See
+ * ../../new/SCREENSHOTS_FOR_WEBSITE.md for the wanted filenames.)
+ */
+export interface Shot {
+  file: string; // e.g. "maze.png"
+  level: string; // short badge, e.g. "Level 9"
+  title: string;
+  caption: string;
+}
+interface Props {
+  shots: Shot[];
+}
+const { shots } = Astro.props;
+
+// Eagerly resolve any real screenshots present at build time.
+const modules = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/screens/*.{png,jpg,jpeg,webp,avif}',
+  { eager: true }
+);
+const byName = new Map<string, ImageMetadata>();
+for (const [path, mod] of Object.entries(modules)) {
+  const name = path.split('/').pop()!;
+  byName.set(name, mod.default);
+}
+---
+
+<div class="gallery">
+  {
+    shots.map((s) => {
+      const img = byName.get(s.file);
+      return (
+        <figure class:list={['shot', { 'shot--placeholder': !img }]}>
+          <div class="shot__frame">
+            {img ? (
+              <Image
+                src={img}
+                alt={`${s.title} — ${s.caption}`}
+                widths={[480, 800, 1200]}
+                sizes="(min-width: 900px) 33vw, (min-width: 560px) 50vw, 100vw"
+                loading="lazy"
+              />
+            ) : (
+              <div class="shot__ph" aria-hidden="true">
+                <svg viewBox="0 0 64 64" class="shot__glyph">
+                  <circle cx="32" cy="32" r="22" class="g-ring" />
+                  <circle cx="32" cy="32" r="13" class="g-ring g-ring--in" />
+                  <circle cx="32" cy="32" r="3.4" class="g-core" />
+                  <path d="M10 32h44M32 10v44" class="g-cross" />
+                </svg>
+                <span class="shot__phlabel">frame in progress</span>
+              </div>
+            )}
+            <span class="shot__badge">{s.level}</span>
+          </div>
+          <figcaption>
+            <strong>{s.title}</strong>
+            <span class="muted">{s.caption}</span>
+          </figcaption>
+        </figure>
+      );
+    })
+  }
+</div>
+
+<style>
+  .gallery {
+    display: grid;
+    gap: 1.1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  }
+  .shot {
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line-700);
+    background: var(--night-700);
+    transition: transform 0.3s var(--ease), border-color 0.3s var(--ease),
+      box-shadow 0.3s var(--ease);
+  }
+  .shot:hover {
+    transform: translateY(-3px);
+    border-color: rgba(227, 168, 87, 0.45);
+    box-shadow: 0 16px 50px -24px rgba(0, 0, 0, 0.9),
+      0 0 40px -22px rgba(227, 168, 87, 0.5);
+  }
+  .shot__frame {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+  .shot__frame :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* placeholder */
+  .shot__ph {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.8rem;
+    background:
+      radial-gradient(80% 70% at 50% 35%, rgba(227, 168, 87, 0.1), transparent 70%),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(36, 50, 70, 0.25) 0 10px,
+        transparent 10px 20px
+      ),
+      linear-gradient(180deg, var(--night-600), var(--night-800));
+  }
+  .shot__glyph {
+    width: 64px;
+    height: 64px;
+    opacity: 0.8;
+  }
+  .g-ring {
+    fill: none;
+    stroke: var(--drift-500);
+    stroke-width: 1.3;
+    transform-origin: 32px 32px;
+    animation: ph-spin 18s linear infinite;
+  }
+  .g-ring--in {
+    stroke: var(--lamp-500);
+    animation-duration: 12s;
+    animation-direction: reverse;
+  }
+  .g-core {
+    fill: var(--lamp-300);
+  }
+  .g-cross {
+    stroke: rgba(154, 166, 173, 0.25);
+    stroke-width: 1;
+  }
+  @keyframes ph-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .shot__phlabel {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted-400);
+  }
+
+  .shot__badge {
+    position: absolute;
+    top: 0.7rem;
+    left: 0.7rem;
+    font-size: 0.68rem;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.28em 0.6em;
+    border-radius: 999px;
+    color: var(--lamp-300);
+    background: rgba(7, 10, 18, 0.7);
+    border: 1px solid rgba(227, 168, 87, 0.3);
+    backdrop-filter: blur(4px);
+  }
+
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.85rem 1rem 1rem;
+  }
+  figcaption strong {
+    font-family: var(--serif);
+    font-weight: 540;
+    font-size: 1.05rem;
+    color: var(--ceramic-100);
+  }
+  figcaption .muted {
+    font-size: var(--step--1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .g-ring {
+      animation: none;
+    }
+  }
+</style>
