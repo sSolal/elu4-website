@@ -1,0 +1,129 @@
+---
+title: 'DevLog 0 : First contact with the Fourth'
+subtitle: "I've just met my first hypercube. It wasn't so hard — but I had to do everything from scratch. No existing game engine would help me."
+date: 2026-06-23
+kind: 'Dev journal'
+order: 0
+readingMin: 5
+hero: '../../assets/blog/devlog0-hero.webp'
+heroAlt: 'A glowing wireframe hypercube floating over a pastel valley of round trees, a four-dimensional sun rising behind the mountains.'
+heroCaption: 'ChatGPT is having a hard time…'
+---
+
+import Figure from '../../components/Figure.astro';
+import projection3d from '../../assets/blog/devlog0-projection-3d.webp';
+import hypercube from '../../assets/blog/devlog0-hypercube.webp';
+import cube2d from '../../assets/blog/devlog0-cube-2d.webp';
+
+Starting a game in 4D means rethinking every single aspect of game development
+through a completely new[^1] lens. Most crucially, no game engine (that I know
+of) natively supports the features I need. Unity? Unreal? They're built for our
+3D world and stop there.
+
+## No Roads Lead to 4D
+
+So before I could build a game, I had to build the foundation itself. First
+order of business: render our first hypercube!
+
+But to understand how the screenshot you'll see came to be — and how to read it
+the right way — we need to break down the principles of projecting 4D down to
+2D.
+
+## The Foundation: How 3D Becomes 2D
+
+Imagine you're looking through a window at the world outside. That window is
+your computer screen. To figure out where each 3D point should appear on the
+screen, we draw a straight line from your eye through the 3D point until it hits
+the window. Where it hits the window is where we draw that point on screen.
+
+<Figure
+  src={projection3d}
+  alt="Diagram of perspective projection: rays from a viewer's eye pass through a screen plane to near and far objects along the depth axis."
+  caption="Perspective projection in 3D — rays from the eye cross the screen on their way to the world. Closer objects subtend a larger patch of the screen."
+  wide
+/>
+
+Some key insights that will become crucial for 4D:
+
+- Objects further away appear smaller, because the projection rays converge as
+  they get closer to your eye.
+- What you are "looking at" sits at the center of the projection plane.
+- When you turn your head to the left (assuming your screen turns with you), you
+  see objects move in your field of view to the right.
+- Objects further away in the same direction appear inside — or behind, if the
+  front object is opaque.
+- The "forward" axis disappears — it's precisely the dimension along which
+  things get projected.
+
+## The Leap: 4D on a 3D Surface
+
+My first screenshot of a soon-to-be AAA game:
+
+<Figure
+  src={hypercube}
+  alt="A wireframe rendering: a large grey cube floating in space, with a smaller red wireframe cube nested inside it — the projection of a hypercube."
+  caption="My first screenshot of a soon-to-be AAA game."
+/>
+
+The principle is exactly the same. So how should you interpret that image?
+
+First, you see a big grey cube. This is your screen — but **not** your computer
+screen. This grey cube is a 3D projection screen floating in space. It won't
+move, and only what happens inside it is the actual game you're interested in.
+Yes, it's _itself_ projected onto your 2D screen (because that's the actual
+shape of your monitor), but try your best to visualize it "in 3D" — it will make
+understanding everything else infinitely easier.
+
+Inside this 3D screen, you see a red shape that looks like one big cube
+containing one smaller cube.
+
+### Aha!
+
+Ever noticed how a 3D cube, viewed from the right angle, looks like this in 2D
+projection?
+
+<Figure
+  src={cube2d}
+  alt="A 2D projection of a cube seen face-on: a large square with a smaller square nested at its center, connected by edges."
+  caption="Oh wow! One big square containing one smaller square!"
+/>
+
+One big square containing one smaller square!
+
+It's the exact same phenomenon here. What we're seeing in red are the front
+hyperface and the back hyperface of a hypercube. The "side hyperfaces" are being
+twisted and distorted the same way the sides of a 3D cube appear as trapezoids
+in 2D projection.
+
+But here's where it gets mind-bending: while a cube has 4 "side" faces, our
+hypercube has **6** "side" hyperfaces — one for each face of the inner and outer
+cubes you see!
+
+This understanding is fundamental to what comes next: movement in our game.
+
+Think about it: in a 3D game, you move forward/backward, left/right, up/down. In
+our 4D game, you move forward/backward, left/right, up/down, _and_ ana/kata —
+the fourth-dimensional directions.
+
+But how do you show a player they're moving in a direction that doesn't exist in
+their visual experience? How do you design UI for navigation in impossible
+space? How do you make it intuitive when the geometry itself defies intuition?
+
+Let's tackle those questions in a next post, one hypercube at a time.
+
+## What's Next
+
+In the coming devlogs, we'll dive deep into:
+
+- **Movement mechanics:** how to walk through 4D space without losing your mind.
+- **Rendering techniques:** how to get rid of wireframe rendering — and maybe
+  into something volumetric?
+- **Rotations:** getting a torticollis in 4D is on a whole other level.
+- **4D level design:** creating spaces that are impossible yet intuitive.
+
+[^1]: While there have been some attempts at making 4D games, most fall short of
+    what I want to achieve. Two are worth mentioning. **Miegakure** is inspiring
+    and astoundingly well polished, but takes a stance on 4D that's unconvincing
+    to me: accepting that we'll only ever be able to see a slice of it. The other
+    is the **4D Maze Game**, which is much closer to my vision and really got me
+    into 4D — but it requires looking through crossed-eyes 3D… not for everyone.

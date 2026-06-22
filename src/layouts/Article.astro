@@ -1,5 +1,7 @@
 ---
 import Base from './Base.astro';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
   title: string;
@@ -7,8 +9,12 @@ interface Props {
   date: Date;
   kind?: string;
   readingMin?: number;
+  hero?: ImageMetadata;
+  heroAlt?: string;
+  heroCaption?: string;
 }
-const { title, subtitle, date, kind, readingMin } = Astro.props;
+const { title, subtitle, date, kind, readingMin, hero, heroAlt, heroCaption } =
+  Astro.props;
 const dateLabel = date.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
@@ -30,6 +36,24 @@ const dateLabel = date.toLocaleDateString('en-US', {
           {readingMin && <span>· {readingMin} min read</span>}
         </p>
       </header>
+
+      {
+        hero && (
+          <figure class="article__hero">
+            <div class="article__hero-frame">
+              <Image
+                src={hero}
+                alt={heroAlt ?? title}
+                widths={[640, 1024, 1600]}
+                sizes="(min-width: 1100px) 64rem, 100vw"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </div>
+            {heroCaption && <figcaption>{heroCaption}</figcaption>}
+          </figure>
+        )
+      }
 
       <div class="article__body prose prose-wrap">
         <slot />
@@ -69,6 +93,43 @@ const dateLabel = date.toLocaleDateString('en-US', {
   .article__meta {
     margin-top: 1.2rem;
     font-size: var(--step--1);
+  }
+  /* hero cover — full-width vignette beneath the title, Medium-style */
+  .article__hero {
+    margin: clamp(1.8rem, 4vw, 2.8rem) auto 0;
+    max-width: 64rem;
+  }
+  .article__hero-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--line-700);
+    box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.95),
+      0 0 70px -34px rgba(227, 168, 87, 0.4);
+  }
+  .article__hero-frame :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  /* a soft lamp-lit vignette over the cover so it melts into the dark page */
+  .article__hero-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      120% 100% at 50% 38%,
+      transparent 52%,
+      rgba(7, 10, 18, 0.5) 100%
+    );
+  }
+  .article__hero figcaption {
+    margin-top: 0.9rem;
+    text-align: center;
+    font-size: var(--step--1);
+    font-style: italic;
+    color: var(--muted-400);
   }
   .article__body {
     margin-inline: auto;

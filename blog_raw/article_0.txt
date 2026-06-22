@@ -1,0 +1,70 @@
+
+I’ve just met my first hypercube. While it wasn’t so difficult, I had to do everything from scratch. No existing game engine would help me.
+
+[hero0] with caption (ChatGPT is having a hard time…)
+
+
+
+
+No Roads Lead to 4D
+
+Starting a game in 4D means rethinking every single aspect of game development through a completely new¹ lens. Most crucially, no game engine (that I know of) natively supports the features I need. Unity? Unreal? They’re built for our 3D world and stop there.
+
+So before I could build a game, I had to build the foundation itself. First order of business: render our first hypercube!
+
+But to understand how the screenshot you’ll see came to be, and how to interpret it the right way, we need to break down the principles of 4D to 2D projection.
+The Foundation: How 3D Becomes 2D
+
+Imagine you’re looking through a window at the world outside. That window is your computer screen. To figure out where each 3D point should appear on the screen, we draw a straight line from your eye through the 3D point until it hits the window. Where it hits the window is where we draw that point on screen.
+
+[Image01]
+
+Some key insights that will become crucial for 4D:
+
+    Objects further away appear smaller because the projection rays converge as they get closer to your eye
+    What you are “looking at” sits at the center of the projection plane
+    When you turn your head “to the left” (assuming your screen turns with you), you see objects moving in your field of view “to the right”
+    Objects further away in the same direction appear inside (or behind if the front object is opaque)
+    The “forward” axis disappears — it’s precisely the dimension along which things get projected
+
+The Leap: 4D on a 3D Surface
+
+My first screenshot of a soon-to-be AAA game:
+
+[The principle is exactly the same. How should you interpret that image?]
+
+First, you see a big grey cube. This is your screen — but not your computer screen. This grey cube is a 3D projection screen floating in space. It won’t move, and only what happens inside it is the actual game you’re interested in. Yes, it’s itself projected onto your 2D screen (because that’s the actual shape of your monitor), but try your best to visualize it “in 3D” — it will make understanding everything else infinitely easier.
+
+
+[Image02] (My first screenshot of a soon to be AAA game)
+
+Inside this 3D screen, you see a red shape that looks like one big cube containing one smaller cube.
+Aha!
+
+Ever noticed how a 3D cube, when viewed from the right angle, looks like this in 2D projection?
+
+[Image 3](Oh wow! One big square containing one smaller square!)
+
+One big square containing one smaller square!
+
+It’s the exact same phenomenon here. What we’re seeing in red are the front hyperface and the back hyperface of a hypercube. The “side hyperfaces” are being twisted and distorted in the same way that the sides of a 3D cube appear as trapezoids in 2D projection.
+
+But here’s where it gets mind-bending: while a cube has 4 “side” faces, our hypercube has 6 “side” hyperfaces — one for each face of the inner and outer cubes you see!
+
+This understanding is fundamental to what comes next: movement in our game.
+
+Think about it: in a 3D game, you move forward/backward, left/right, up/down. In our 4D game, you move forward/backward, left/right, up/down, and ana/kata (the fourth dimensional directions).
+
+But how do you show a player they’re moving in a direction that doesn’t exist in their visual experience? How do you design UI for navigation in impossible space? How do you make it intuitive when the geometry itself defies intuition?
+
+Let’s tackle those questions in a next post, one hypercube at a time.
+What’s Next
+
+In the coming devlogs, we’ll dive deep into:
+
+    Movement mechanics: How to walk through 4D space without losing your mind
+    Rendering techniques: How to get rid of wireframe rendering and maybe into volumetric?
+    Rotations: Getting a torticollis in 4D is on a whole other level
+    4D level design: Creating spaces that are impossible yet intuitive
+
+1 : While there have been some attempts at making 4D games, most fall short of what I want to achieve. Two games worth mentioning are Miegakure which is inspiring and astoundingly well polished, but takes a stance on 4D that is unconvincing to me: accepting that we will only ever be able to see a slice of it. Another one is 4D Maze Game which is much close to my vision, and really got me into 4D, but requires to look through crossed-eyes 3D… Not for everyone)

@@ -1,0 +1,58 @@
+Title : Fun facts about 4D
+
+[hero2.webp] (May they become the main character of our game?)
+
+What Are the Four Dimensions in Our Game?
+
+In my game, we’re building a world with four genuine spatial dimensions. Like many 3D games, we’ll have one “special” dimension with two directions called up and down, with constant gravity pulling everything downward.
+
+Among the three remaining dimensions, two will sound familiar. But here’s the crucial point: all three must be understood as completely symmetrical. None is more important or more “intuitive” than the others. As a matter of fact, we’ll most often take the point of view of a “character” standing upright, so those three directions are relative to this character. This means they can change and switch (the same way your left becomes your back when you turn right).
+
+The four directions are:
+
+    Left and right
+    Front and back
+    Ana and kata (as is customary in 4D terminology)
+
+
+    [four_directions.webp]
+
+    Most things work “as in 3D,” but with dramatically more freedom.
+Mind-Bending Fun Facts from the 4D World
+
+Before we delve into specific intuition, insights, or mathematical details, here’s a collection of fun facts and surprisingly visualizable phenomena as an introduction to the wonders of our 4D world.
+The Hypercube: A Cube’s Four-Dimensional Cousin
+
+In 4 dimensions, the equivalent of a cube is called a hypercube. Here’s how geometric complexity explodes as we add dimensions:
+
+    A line has 2 vertices
+    A square has 4 vertices and 4 lines
+    A cube has 8 vertices, 12 lines and 6 squares
+    A hypercube has 16 vertices, 32 edges, 24 faces, and… 8 cubes
+
+Go figure out what that looks like!
+The Four-Legged Stool Test
+
+In 4 dimensions, a stool needs 4 legs.
+
+Want to know how many dimensions the world you’re in has? Try building a stool! In our world, with 3 legs it has nowhere left to lose balance. In a 4-dimensional world, it needs a fourth leg!
+The Impossible Knot Problem
+
+In 4 dimensions, you cannot tie a knot.
+
+Not in the usual sense at least… In a 4D world, there’s no way to make a knot for your shoelaces, for instance. Pull on the end and it will undo itself!
+The Inside-Out Football Trick
+
+In 4 dimensions, you can turn a football inside out.
+
+If your football is damaged, you just need to reverse it and have the exterior hidden inside! Take your football, or any sphere, and just follow the instructions. That was not difficult, was it?
+The Sixth Platonic Solid
+
+In 4 dimensions, there is one more Platonic solid.
+
+The 5 Platonic solids — allegoric of the beauty and pureness of mathematical truth. While we have only 5 to contemplate in our 3D world, there are actually 6 in a 4-dimensional world. And some of them are actually way prettier than ours!
+Storage Space Paradise
+
+In 4 dimensions, a hypercube of 1m⁴ contains 10,000 hyper-liters of 10cm⁴.
+
+You can stuff so many more packs of oat milk in your drawer!
