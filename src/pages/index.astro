@@ -6,10 +6,22 @@ import type { Shot } from '../components/ScreenshotGallery.astro';
 
 const shots: Shot[] = [
   {
+    file: 'menu.png',
+    level: 'Menu',
+    title: 'Keep the lamps lit',
+    caption: 'Where every session begins — pick a lesson and step in.',
+  },
+  {
     file: 'corridor.png',
     level: 'Level 1',
     title: 'The Corridor',
     caption: 'Learning to read depth in the new direction.',
+  },
+  {
+    file: 'dodgeball.png',
+    level: 'Level 2',
+    title: 'Dodgeball',
+    caption: 'Sidestepping four ways at once as the volleys come down.',
   },
   {
     file: 'turn-and-face.png',
@@ -18,10 +30,22 @@ const shots: Shot[] = [
     caption: 'Bringing the fourth direction into view.',
   },
   {
+    file: 'third-person.png',
+    level: 'Level 4',
+    title: 'Third Person',
+    caption: 'Steering an avatar through 4D from outside it.',
+  },
+  {
     file: 'leap.png',
     level: 'Level 5',
     title: 'The Leap',
     caption: 'Gravity, footing, and a jump across the gap.',
+  },
+  {
+    file: 'plane-3d.png',
+    level: 'Level 6',
+    title: 'The Plane',
+    caption: 'Constant thrust and banking turns — flight, the familiar way.',
   },
   {
     file: 'plane-4d.png',
@@ -40,6 +64,12 @@ const shots: Shot[] = [
     level: 'Level 9',
     title: 'The Maze',
     caption: 'Holding a 4D place in your head until it goes quiet.',
+  },
+  {
+    file: 'big-vista.png',
+    level: 'Level 10',
+    title: 'Big Vista',
+    caption: 'A wide 4D landscape of rolling hills, seen all at once.',
   },
 ];
 
@@ -145,8 +175,8 @@ const roadmap = [
       <ScreenshotGallery shots={shots} />
 
       <p class="experiment__cap muted">
-        Frames from the live build — the renderer as it stands today. A handful
-        are still being staged, and those tiles fill in as we go.
+        Frames from the live build — the menu and all ten teaching levels, the
+        renderer exactly as it stands today.
       </p>
     </div>
   </section>
