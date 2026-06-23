@@ -77,7 +77,7 @@ const roadmap = [
   {
     n: '01',
     h: 'A first demo',
-    p: 'Soon: the first public demo of our 4D interaction system — ten levels that teach your eyes and hands to move in four dimensions.',
+    p: 'Done: the first public demo of our 4D interaction system is out — ten levels that teach your eyes and hands to move in four dimensions. Download it above.',
   },
   {
     n: '02',
@@ -177,6 +177,50 @@ const roadmap = [
       <p class="experiment__cap muted">
         Frames from the live build — the menu and all ten teaching levels, the
         renderer exactly as it stands today.
+      </p>
+    </div>
+  </section>
+
+  <!-- PLAY IT --------------------------------------------------------- -->
+  <section id="play" class="section-pad">
+    <div class="wrap">
+      <p class="eyebrow">Play it now</p>
+      <h2 class="band__h">Walk the ten levels yourself</h2>
+      <p class="lede band__lede">
+        The first public demo is out. Download the build for your system and step
+        in — no account, no installer. Free and open source.
+      </p>
+
+      <div class="downloads">
+        <a
+          class="dl panel"
+          href="https://github.com/sSolal/elu4/releases/latest/download/elu4-x86_64.AppImage"
+        >
+          <span class="dl__os">Linux</span>
+          <span class="dl__file">elu4-x86_64.AppImage</span>
+          <span class="dl__hint muted">
+            <code>chmod +x</code> it, then run — GLEW &amp; GLFW are bundled.
+          </span>
+          <span class="btn dl__btn">Download for Linux</span>
+        </a>
+
+        <a
+          class="dl panel"
+          href="https://github.com/sSolal/elu4/releases/latest/download/elu4-windows-x64.zip"
+        >
+          <span class="dl__os">Windows</span>
+          <span class="dl__file">elu4-windows-x64.zip</span>
+          <span class="dl__hint muted">
+            Extract the folder, then run <code>game.exe</code> — nothing to install.
+          </span>
+          <span class="btn dl__btn">Download for Windows</span>
+        </a>
+      </div>
+
+      <p class="experiment__cap muted">
+        A working GPU with OpenGL is all you need. Every release and the full
+        source live on
+        <a href="https://github.com/sSolal/elu4/releases">GitHub</a>.
       </p>
     </div>
   </section>
@@ -300,6 +344,60 @@ const roadmap = [
     margin-top: 1rem;
     font-size: var(--step--1);
     font-style: italic;
+  }
+
+  /* play it / downloads */
+  .downloads {
+    margin-top: 2.4rem;
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) {
+    .downloads {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .dl {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 1.6rem 1.6rem 1.8rem;
+    color: inherit;
+    transition: border-color 0.2s var(--ease), transform 0.2s var(--ease),
+      box-shadow 0.3s var(--ease);
+  }
+  .dl:hover {
+    text-decoration: none;
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 0 32px -12px rgba(227, 168, 87, 0.5);
+  }
+  .dl__os {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    color: var(--lamp-300);
+  }
+  .dl__file {
+    font-family: var(--mono, monospace);
+    font-size: var(--step--1);
+    color: var(--ceramic-300);
+    word-break: break-all;
+  }
+  .dl__hint {
+    font-size: var(--step--1);
+    max-width: 36ch;
+  }
+  .dl__hint code,
+  .experiment__cap code {
+    font-size: 0.9em;
+  }
+  .dl__btn {
+    margin-top: 0.9rem;
+  }
+  .dl:hover .dl__btn {
+    box-shadow: 0 0 24px -8px rgba(227, 168, 87, 0.6);
   }
 
   /* where we're headed */
